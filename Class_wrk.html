@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAVASCRIPT BASICS</title>
+    <title>Attendance Checker</title>
 </head>
 <body>
-    <button onclick="myFunction()">Try it</button>
-    <script src="./arrow function.js"></script>
+
+    <h2>Student Attendance Checker</h2>
+
+    <label for="totalClasses">Enter Total Classes:</label><br>
+    <input type="number" id="totalClasses"><br><br>
+
+    <label for="attendedClasses">Enter Attended Classes:</label><br>
+    <input type="number" id="attendedClasses"><br><br>
+
+    <button onclick="checkAttendance()">Check Attendance</button>
+
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
