@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Age Checker</title>
+    <title>Even Odd Checker</title>
 </head>
 <body>
 
-    <h2>Voting Eligibility Checker</h2>
+    <h2>Even or Odd Number Checker</h2>
 
-    Enter Your Age:
-    <input type="number" id="age">
+    Enter a Number:
+    <input type="number" id="num">
     <br><br>
 
-    <button onclick="checkAge()">Check</button>
+    <button onclick="checkNumber()">Check</button>
 
     <h3 id="result"></h3>
 
     <script>
-        function checkAge() {
-            let age = document.getElementById("age").value;
+        function checkNumber() {
+            let num = document.getElementById("num").value;
 
-            if (age >= 18) {
+            if (num % 2 == 0) {
                 document.getElementById("result").innerHTML =
-                "You are eligible to vote.";
+                num + " is an Even Number";
             } else {
                 document.getElementById("result").innerHTML =
-                "You are not eligible to vote.";
+                num + " is an Odd Number";
             }
         }
     </script>
 
 </body>
-</html>`
+</html>
