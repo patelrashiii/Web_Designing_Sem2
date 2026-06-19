@@ -1,0 +1,1682 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Clone</title>
+
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #E3E6E6;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+img {
+    cursor: pointer;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #131921;
+    color: white;
+    padding: 12px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 130px;
+    height: 50px;
+}
+
+.nav-location {
+    text-align: center;
+    margin-left: 15px;
+}
+
+.nav-center {
+    display: flex;
+    flex: 1;
+    margin: 5px 20px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+}
+
+.category-select {
+    width: 80px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+    padding: 10px 14px;
+    background: #febd69;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-icon {
+    width: 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.flag {
+    width: 22px;
+}
+
+.nav-cart {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon {
+    width: 40px;
+}
+
+.sub-navbar {
+    background: #232f3e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 35px;
+}
+
+.subnav-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.menu-icon {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.subnav-left a:hover {
+    text-decoration: underline;
+}
+
+.rufus-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.rufus-icon {
+    width: 20px;
+}
+
+.subnav-right img {
+    height: 40px;
+}
+
+.hero-section {
+    background: #E3E6E6; 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto; 
+    object-position: top; 
+}
+
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%; 
+    background: linear-gradient(to bottom, transparent, #E3E6E6);
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: rgba(255,255,255,0.6);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+.arrow:hover {
+    background: white;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative; 
+    z-index: 10;      
+    margin-top: -12vw;  
+    padding: 0 20px;
+}
+
+.product-container {
+    display: flex;
+    gap: 20px;
+}
+
+.product-box {
+    width: 25%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.product-box h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.product-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-item p {
+    font-size: 14px;
+}
+
+.large-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.large-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.explore {
+    color: #0073e6;
+}
+
+.slider-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    font-size: 40px;
+    cursor: pointer;
+    background: white;
+    padding: 5px 10px;
+}
+
+.recommend-section {
+    background: white;
+    width: 95%; 
+    max-width: 1400px; 
+    padding: 20px;
+    margin: 20px auto; 
+    border-radius: 5px;
+}
+
+.recommend-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; 
+    padding-bottom: 15px; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+}
+
+.recommend-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.recommend-section h2 {
+    margin-bottom: 15px;
+}
+
+.recommend-card {
+    min-width: 180px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.recommend-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+}
+
+.recommend-card:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.recommend-card span {
+    color: #B12704;
+    font-weight: bold;
+}
+
+.add-to-cart-btn {
+    background: #ffd814;
+    border: 1px solid #fcd200;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.add-to-cart-btn:hover {
+    background: #f7ca00;
+}
+
+.add-to-cart-btn.added {
+    background: #28a745 !important; 
+    border: 1px solid #218838 !important;
+    color: white !important;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+    transition: all 0.3s ease;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; 
+    width: 350px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+.cart-header {
+    background: #131921;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+#close-cart {
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.cart-item-row {
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.cart-item-title {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cart-item-price {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); 
+    z-index: 999; 
+    opacity: 0;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: all; 
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -450px; 
+    width: 450px;  
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5); 
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+#close-cart {
+    font-size: 28px;
+    cursor: pointer;
+    font-weight: 300;
+    display: inline-block; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+#close-cart:hover {
+    transform: rotate(90deg); 
+    color: #FF9900; 
+}
+
+.qty-btn {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.qty-btn:hover {
+    background: #f0f0f0;
+}
+
+.qty {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.remove-btn {
+    color: #007185;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+    color: #c45500;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    background: white;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: #FF9900;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background: #FA8900;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 2px;
+    left: 15px; 
+    background-color: #f08804; 
+    color: #131921;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    z-index: 2;
+}
+
+.cart-icon {
+    width: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+#close-cart {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#cart-items-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+    background: #ffa41c;
+    border: 1px solid #ff8f00;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -400px; 
+    width: 365px;
+    height: 100vh;
+    background: white;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu.active {
+    left: 0; 
+}
+
+/* Header (Hello, Sign in) */
+.side-menu-header {
+    background: #232f3e;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+}
+
+#close-menu {
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#close-menu:hover {
+    transform: rotate(90deg);
+}
+
+/* Scrollable Content */
+.side-menu-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.side-menu-content h3 {
+    font-size: 16px;
+    color: #111;
+    padding: 20px 20px 5px 20px;
+    margin: 0;
+}
+
+.side-menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu-content li a {
+    display: block;
+    padding: 13px 20px;
+    color: #111;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.side-menu-content li a:hover {
+    background-color: #eaeded; 
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: #d5d9d9;
+    margin: 10px 0;
+}
+
+/* FOOTER */
+.footer-top {
+    background: #37475a;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+}
+
+.footer-main {
+    background: #232f3e;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.footer-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-cols a {
+    display: block;
+    color: #ddd;
+    margin: 6px 0;
+}
+
+.footer-cols a:hover {
+    text-decoration: underline;
+}
+
+.footer-mid {
+    background: #232f3e;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-services {
+    background: #131a22;
+    color: #ddd;
+    padding: 30px 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.footer-bottom {
+    background: #131a22;
+    color: #aaa;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1240px) {
+
+    .product-box {
+        width: 48%;
+    }
+
+    .large-box {
+        display: none;
+    }
+
+    .language,
+    .category-select,
+    .subnav-right {
+        display: none;
+    }
+
+    .footer-cols,
+    .services-grid {
+        text-align: center;
+    }
+}
+
+/* TABLET */
+@media (max-width: 992px) {
+
+    .nav-center {
+        margin: 5px;
+    }
+
+    .product-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-box {
+        width: 45%;
+    }
+
+    .hero-section img {
+        height: auto; 
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .nav-center {
+        width: 100%;
+    }
+
+    .search-input {
+        padding: 10px;
+    }
+
+    .nav-right {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .product-box {
+        width: 90%;
+    }
+
+    .sub-navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-section img {
+        height: auto; 
+    }
+    
+    .main-content {
+        margin-top: -20vw; 
+    }
+}
+
+/* Hover Effects */
+
+.product-box:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.product-item img:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.navbar span:hover,
+.subnav-left a:hover {
+    border: 1px solid white;
+    padding: 3px;
+}
+
+.search-button:hover {
+    background: #f3a847;
+}
+    </style>
+    <link
+      rel="icon"
+      href="https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/junguler/amazon-ember-font/amazonember.css"
+    />
+
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="logo-container">
+          <img class="logo" src="assets/amazon_ico.png" alt="Amazon Logo" />
+          <span><b>.in</b></span>
+        </div>
+        <div class="nav-location">
+          <p>Deliver to Ghaziabad 201009</p>
+          <i class="fa-solid fa-location-dot"></i>
+          <strong>Update Location</strong>
+        </div>
+      </div>
+
+      <div class="nav-center">
+        <select class="category-select">
+          <option>All</option>
+          <option>Alexa Skills</option>
+          <option>Amazon Devices</option>
+          <option>Amazon Pay</option>
+          <option>Amazon Pharmacy</option>
+          <option>Amazon Web Services</option>
+          <option>Apps & Games</option>
+        </select>
+
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search Amazon.in"
+        />
+
+        <button class="search-button">
+          <img
+            class="search-icon"
+            src="https://cdn.icon-icons.com/icons2/2839/PNG/512/preferences_system_search_icon_180956.png"
+            alt="Search"
+          />
+        </button>
+      </div>
+
+      <div class="nav-right">
+        <div class="language">
+          <img
+            class="flag"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1280px-Flag_of_India.svg.png"
+            alt="Flag"
+          />
+          <h4>EN</h4>
+        </div>
+        <span class="nav-login">
+          <a href="#">
+            Hello, Sign in <br />
+            <b>Account & Lists</b>
+          </a>
+        </span>
+        <span class="nav-orders">
+          Returns <br />
+          <b>& Orders</b>
+        </span>
+        <span class="nav-cart">
+          <div class="cart-wrapper">
+            <span class="cart-badge">0</span>
+            <img class="cart-icon" src="assets/cart.png" alt="Cart" />
+          </div>
+          Cart
+        </span>
+      </div>
+    </header>
+
+    <div class="sub-navbar">
+      <div class="subnav-left">
+        <div class="menu-icon">
+          &#9776;
+          <a href="#"><b>All</b></a>
+        </div>
+        <button class="rufus-btn">
+          <img class="rufus-icon" src="assets/rufus.png" alt="Rufus" />
+          <div><b>Rufus</b></div>
+        </button>
+        <a href="#">Fresh</a>
+        <a href="#">MX Player</a>
+        <a href="#">Sell</a>
+        <a href="#">Car & Motorbike</a>
+        <a href="#">Bestsellers</a>
+        <a href="#">Buy Again</a>
+      </div>
+      <div class="subnav-right">
+        <img class="sale-banner" src="assets/Black-sale.jpg" alt="Sale Banner" />
+      </div>
+    </div>
+
+    <section class="hero-section">
+      <div class="carousel-track">
+        <div class="slide">
+          <img
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/shrey/PChero/Live_PC_Hero_Lifestyle_3000x1200-gun._CB785335068_.jpg"
+            alt="Hero 1"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/APAY/MAR26/travel/Flight_PC-Hero-Template_GW-VX_3000x1200_1._CB781726924_.jpg"
+            alt="Hero 2"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/INSLGW/Premium_Edit_BAU_GW._CB783723050_.jpg"
+            alt="Hero 3"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonBusiness/img26/feb/gw/pchero/WholesalePriceOnFurniture_3000_1200_1501._CB787353499_.jpg"
+            alt="Hero 4"
+          />
+        </div>
+      </div>
+
+      <button class="arrow left">&#10094;</button>
+      <button class="arrow right">&#10095;</button>
+    </section>
+
+    <div class="main-content">
+      <div class="product-container">
+        <div class="product-box">
+          <h2>Up to 60% off | Furniture & mattresses</h2>
+          <div class="product-grid">
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Furniture/2023/PCQC_new/Mattresses._SY116_CB573440912_.jpg"
+                alt="Mattresses"
+              />
+              <p>Mattresses & more</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Furniture/2023/PCQC_new/Office_chairs._SY116_CB573440912_.jpg"
+                alt="Office Chairs"
+              />
+              <p>Office chairs & more</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Furniture/2023/PCQC_new/Sofas._SY116_CB573440912_.jpg"
+                alt="Sofas"
+              />
+              <p>Sofas & more</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Furniture/2023/PCQC_new/Bean_bags._SY116_CB573440912_.jpg"
+                alt="Bean bags"
+              />
+              <p>Bean bags & more</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-box">
+          <h2>Bulk order discounts + Up to 18% GST savings</h2>
+          <div class="product-grid">
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonBusiness/img25/nov/bau/ain/gw/Laptops_186_116_10._SY116_CB777673831_.jpg"
+                alt="Laptops"
+              />
+              <p>Up to 45% off | Laptops</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonBusiness/img25/nov/bau/ain/gw/KitchenAppliances_186_116_10._SY116_CB777673831_.jpg"
+                alt="Appliances"
+              />
+              <p>Up to 60% off | Kitchen appliances</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonBusiness/img25/nov/bau/ain/gw/OfficeChairs_186_116_10._SY116_CB777673831_.jpg"
+                alt="Furniture"
+              />
+              <p>Min. 50% off | Office furniture</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonBusiness/img25/nov/bau/ain/gw/TV_186_116_10._SY116_CB777675154_.jpg"
+                alt="TVs"
+              />
+              <p>Up to 40% off | Televisions</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-box">
+          <h2>Black Friday Special Offers</h2>
+          <div class="product-grid">
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IN-Events/Shankhadip/AugArt24_Logo_75x75/BFCM25_GW_PC_QC_Coupons_1x_V2._SY116_CB777701842_.jpg"
+                alt="Coupons"
+              />
+              <p>Extra up to 40% off</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IN-Events/Shankhadip/AugArt24_Logo_75x75/BFCM25_GW_PC_QC_BB_1x_V2._SY116_CB777701842_.jpg"
+                alt="Deals"
+              />
+              <p>Top deals</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IN-Events/Shankhadip/AugArt24_Logo_75x75/BFCM25_GW_PC_QC_BXGY_1x_V2._SY116_CB777701842_.jpg"
+                alt="B1G1"
+              />
+              <p>Buy 2 Get 10%</p>
+            </div>
+            <div class="product-item">
+              <img
+                src="https://images-eu.ssl-images-amazon.com/images/G/31/IN-Events/Shankhadip/AugArt24_Logo_75x75/BFCM25_GW_PC_QC_Combos_1x_V2._SY116_CB777701842_.jpg"
+                alt="Combos"
+              />
+              <p>Up to 40% off</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-box large-box">
+          <h2>Up to 75% off | Headphones</h2>
+          <img
+            class="large-image"
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/MSO5/Boat_PC_CC_758x608_1x._SY304_CB564383870_.jpg"
+            alt="Headphones"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="recommend-section">
+      <div class="recommend-header">
+        <h2>Up to 55% off | Electronics & accessories from Amazon Launchpad</h2>
+        <a href="#" class="explore">Explore more</a>
+      </div>
+      <div class="recommend-grid">
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/61VNrxxDViL._AC_SY200_.jpg"
+            alt="Weighting Machine"
+          />
+          <p>Weighting Machine</p>
+          <span>₹1,299</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="1"
+            data-name="Weighting Machine"
+            data-price="1299"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/71YctMdZFwL._AC_SY200_.jpg"
+            alt="Watch"
+          />
+          <p>Watch</p>
+          <span>₹2,499</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="2"
+            data-name="Watch"
+            data-price="2499"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/610u6b24sTL._AC_SY200_.jpg"
+            alt="Headphones"
+          />
+          <p>Neckband Headphones</p>
+          <span>₹599</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="3"
+            data-name="Neckband Headphones"
+            data-price="599"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/51QBJ9HgzwL._AC_SY200_.jpg"
+            alt="Charger"
+          />
+          <p>80W Charger</p>
+          <span>₹199</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="4"
+            data-name="80W Charger"
+            data-price="199"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/71FuZ8eekQL._AC_SY200_.jpg"
+            alt="Smart Watch"
+          />
+          <p>Smart Watch</p>
+          <span>₹2,499</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="5"
+            data-name="Smart Watch"
+            data-price="2499"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/619C4uZrF3L._AC_SY200_.jpg"
+            alt="Earpods"
+          />
+          <p>Earpods</p>
+          <span>₹999</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="6"
+            data-name="Earpods"
+            data-price="999"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div class="recommend-card">
+          <img
+            src="https://m.media-amazon.com/images/I/71h7fLNEQPL._AC_SY195_.jpg"
+            alt="Speaker"
+          />
+          <p>Bluetooth Speaker</p>
+          <span>₹1,699</span>
+          <br />
+          <button
+            class="add-to-cart-btn"
+            data-id="7"
+            data-name="Bluetooth Speaker"
+            data-price="1699"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">Back to top</div>
+
+    <footer class="footer-main">
+      <div class="footer-cols">
+        <div>
+          <h4>Get to Know Us</h4>
+          <a href="#">About Amazon</a>
+          <a href="#">Careers</a>
+          <a href="#">Press Releases</a>
+          <a href="#">Amazon Science</a>
+        </div>
+        <div>
+          <h4>Connect with Us</h4>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+        </div>
+        <div>
+          <h4>Make Money with Us</h4>
+          <a href="#">Sell on Amazon</a>
+          <a href="#">Sell under Amazon Accelerator</a>
+          <a href="#">Protect and Build Your Brand</a>
+          <a href="#">Amazon Global Selling</a>
+          <a href="#">Supply to Amazon</a>
+          <a href="#">Become an Affiliate</a>
+          <a href="#">Fulfilment by Amazon</a>
+          <a href="#">Advertise Your Products</a>
+          <a href="#">Amazon Pay on Merchants</a>
+        </div>
+        <div>
+          <h4>Let Us Help You</h4>
+          <a href="#">Your Account</a>
+          <a href="#">Returns Centre</a>
+          <a href="#">Recalls and Product Safety Alerts</a>
+          <a href="#">100% Purchase Protection</a>
+          <a href="#">Amazon App Download</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="footer-mid">
+      <div class="lang">
+        <span class="logo">
+          <img class="logo" src="assets/amazon_ico.png" alt="Amazon Logo" />
+        </span>
+        <select>
+          <option>English</option>
+        </select>
+        <select>
+          <option>India</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer-services">
+      <div class="services-grid">
+        <div>
+          <strong>AbeBooks</strong
+          ><span
+            >Books, art <br />
+            & collectibles</span
+          >
+        </div>
+        <div>
+          <strong>Amazon Web Services</strong
+          ><span
+            >Scalable Cloud <br />
+            Computing Services</span
+          >
+        </div>
+        <div>
+          <strong>Audible</strong
+          ><span
+            >Download <br />
+            Audio Books</span
+          >
+        </div>
+        <div>
+          <strong>IMDb</strong
+          ><span
+            >Movies, TV <br />
+            & Celebrities</span
+          >
+        </div>
+        <div>
+          <strong>Shopbop</strong
+          ><span
+            >Designer <br />
+            Fashion Brands</span
+          >
+        </div>
+        <div>
+          <strong>Amazon Business</strong
+          ><span
+            >Everything For <br />
+            Your Business</span
+          >
+        </div>
+        <div>
+          <strong>Amazon Prime Music</strong
+          ><span
+            >100 million songs, ad‑ <br />free <br />
+            Over 15 million podcast episodes</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <a href="#">Conditions of Use & Sale</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Interest‑Based Ads</a><br />
+      © 1996‑2025, Amazon.com, Inc. or its affiliates
+    </div>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h2>Shopping Cart</h2>
+        <span id="close-cart">&times;</span>
+      </div>
+
+      <div class="cart-items" id="cart-items">
+
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total"><b>₹0</b></span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+      </div>
+    </div>
+
+
+<div class="menu-overlay" id="menu-overlay"></div>
+
+<div class="side-menu" id="side-menu">
+    <div class="side-menu-header">
+        <div class="user-profile">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/>
+            </svg>
+            <b>Hello, Sign in</b>
+        </div>
+        <span id="close-menu">&times;</span>
+    </div>
+
+    <div class="side-menu-content">
+        <h3>Digital Content & Devices</h3>
+        <ul>
+            <li><a href="#">Amazon miniTV</a></li>
+            <li><a href="#">Alexa Skills</a></li>
+            <li><a href="#">Amazon Drive</a></li>
+            <li><a href="#">Echo & Alexa</a></li>
+            <li><a href="#">Fire TV</a></li>
+            <li><a href="#">Kindle E-readers & Books</a></li>
+            <li><a href="#">Amazon Appstore</a></li>
+        </ul>
+        
+        <div class="menu-divider"></div>
+        
+        <h3>Shop By Category</h3>
+        <ul>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Computers</a></li>
+            <li><a href="#">Smart Home</a></li>
+            <li><a href="#">Arts & Crafts</a></li>
+            <li><a href="#">Automotive</a></li>
+            <li><a href="#">Baby</a></li>
+            <li><a href="#">Beauty & Personal Care</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Fashion</a></li>
+            <li><a href="#">Health & Household</a></li>
+            <li><a href="#">Home & Kitchen</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    const searchInput = document.querySelector(".search-input");
+    const searchBtn = document.querySelector(".search-button");
+
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", () => {
+            const value = searchInput.value.trim();
+            if (value === "") {
+                alert("Please enter something!");
+            } else {
+                alert("Searching for: " + value);
+            }
+        });
+    }
+
+    const track = document.querySelector(".carousel-track");
+    const slides = document.querySelectorAll(".slide");
+    const nextBtn = document.querySelector(".arrow.right");
+    const prevBtn = document.querySelector(".arrow.left");
+
+    let index = 0;
+
+    function updateSlidePosition() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            index = (index + 1) % slides.length;
+            updateSlidePosition();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            index = (index - 1 + slides.length) % slides.length;
+            updateSlidePosition();
+        });
+    }
+
+    setInterval(() => {
+        index = (index + 1) % slides.length;
+        updateSlidePosition();
+    }, 4000);
+
+});
+
+    const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
+    const cartBadge = document.querySelector(".cart-badge");
+
+    let cartCount = 0; 
+
+    addToCartBtns.forEach(button => {
+        button.addEventListener("click", function() {
+            
+            cartCount++;
+            cartBadge.innerText = cartCount;
+
+            cartBadge.style.transform = "scale(1.3)";
+            setTimeout(() => { cartBadge.style.transform = "scale(1)"; }, 200);
+
+            const originalText = this.innerText;
+            this.classList.add("added");
+            this.innerText = "Added!";
+
+            setTimeout(() => {
+                this.classList.remove("added");
+                this.innerText = originalText;
+            }, 2000);
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+    
+    let cart = [];
+    
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    const cartBadge = document.querySelector('.cart-badge');
+    const navCartBtn = document.querySelector('.nav-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+
+    navCartBtn.addEventListener('click', () => cartSidebar.classList.add('active'));
+    closeCartBtn.addEventListener('click', () => cartSidebar.classList.remove('active'));
+
+    const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
+    
+    addToCartBtns.forEach(button => {
+        button.addEventListener("click", function() {
+
+            const id = this.getAttribute("data-id");
+            const name = this.getAttribute("data-name");
+            const price = parseInt(this.getAttribute("data-price"));
+
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+
+            const originalText = this.innerText;
+            this.classList.add("added");
+            this.innerText = "Added!";
+            setTimeout(() => {
+                this.classList.remove("added");
+                this.innerText = originalText;
+            }, 2000);
+
+            renderCart();
+            cartSidebar.classList.add('active');
+        });
+    });
+
+
+    function renderCart() {
+        cartItemsContainer.innerHTML = ''; 
+        let grandTotal = 0;
+        let totalItemsCount = 0;
+
+        cart.forEach(item => {
+            const rowTotal = item.price * item.quantity;
+            grandTotal += rowTotal;
+            totalItemsCount += item.quantity;
+
+
+            const div = document.createElement('div');
+            div.className = 'cart-item-row';
+            div.innerHTML = `
+                <div class="cart-item-title">${item.name}</div>
+                <div class="cart-item-price">
+                    <b>₹${item.price.toLocaleString('en-IN')} × ${item.quantity} = ₹${rowTotal.toLocaleString('en-IN')}</b>
+                </div>
+                <div class="cart-item-controls">
+                    <button class="qty-btn minus" data-id="${item.id}">−</button>
+                    <span class="qty">${item.quantity}</span>
+                    <button class="qty-btn plus" data-id="${item.id}">+</button>
+                    <span class="remove-btn" data-id="${item.id}">Remove</span>
+                </div>
+            `;
+            cartItemsContainer.appendChild(div);
+        });
+
+       
+        cartTotalElement.innerHTML = `<b>₹${grandTotal.toLocaleString('en-IN')}</b>`;
+        if (cartBadge) cartBadge.innerText = totalItemsCount;
+
+
+        document.querySelectorAll('.qty-btn.plus').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                cart.find(i => i.id === id).quantity += 1;
+                renderCart();
+            });
+        });
+
+    
+        document.querySelectorAll('.qty-btn.minus').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                const product = cart.find(i => i.id === id);
+                if (product.quantity > 1) {
+                    product.quantity -= 1;
+                } else {
+                    cart = cart.filter(i => i.id !== id); 
+                }
+                renderCart();
+            });
+        });
+
+    
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                cart = cart.filter(i => i.id !== id); 
+                renderCart();
+            });
+        });
+    }
+});
+
+
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartOverlay = document.getElementById('cart-overlay'); 
+    const navCartBtn = document.querySelector('.nav-cart');
+    const closeCartBtn = document.getElementById('close-cart');
+
+
+    navCartBtn.addEventListener('click', () => {
+        cartSidebar.classList.add('active');
+        cartOverlay.classList.add('active'); 
+    });
+
+
+    closeCartBtn.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+
+    cartOverlay.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+
+    const sideMenu = document.getElementById('side-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const openMenuBtn = document.querySelector('.menu-icon'); 
+    const closeMenuBtn = document.getElementById('close-menu');
+
+
+    if (openMenuBtn) {
+        openMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+        });
+    }
+
+   
+    if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+    }
+
+
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+    }
+</script>
+  </body>
+</html>
